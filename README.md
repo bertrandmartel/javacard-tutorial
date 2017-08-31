@@ -55,6 +55,8 @@ The following will build, delete applet if existing, install the applet :
 
 #### send apdu
 
+From [gradle script task](https://github.com/bertrandmartel/javacard-tutorial/blob/master/jc101-1c/build.gradle#L20-L33) :
+
 ```bash
 ./gradlew :jc101-1c:sendHello
 ```
@@ -83,6 +85,8 @@ The following will build, delete applet if existing, install the applet :
 ```
 
 #### send apdu
+
+From [gradle script task](https://github.com/bertrandmartel/javacard-tutorial/blob/master/jc101-2c/build.gradle#L19-L48) :
 
 * balance
 
@@ -131,6 +135,8 @@ The following will build, delete applet if existing, install the applet :
 ```
 
 #### send apdu
+
+From [gradle script task](https://github.com/bertrandmartel/javacard-tutorial/blob/master/jc101-password/build.gradle#L19-L56) :
 
 * add password entry 
 
@@ -183,6 +189,8 @@ The following will build, delete applet if existing, install the applet :
 ```
 
 #### send apdu
+
+From [gradle script task](https://github.com/bertrandmartel/javacard-tutorial/blob/master/jc101-password-pin/build.gradle#L24-L81) :
 
 * add password entry 
 
