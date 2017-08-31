@@ -4,10 +4,7 @@ buildscript {
     }
     dependencies {
         classpath 'fr.bmartel:gradle-javacard:1.4.1'
-
-        //coveralls & jacoco test report
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.1.0'
-        classpath 'org.jacoco:org.jacoco.core:0.7.5.201505241946'
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1'
     }
 }
 
@@ -21,7 +18,7 @@ allprojects {
     }
 
     jacoco {
-        toolVersion = '0.7.1.201405082137'
+        toolVersion = '0.7.9'
     }
 }
 
@@ -39,7 +36,7 @@ subprojects {
     test {
         systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
         include '**/TestSuite.class'
-        //outputs.upToDateWhen { false }
+        outputs.upToDateWhen { false }
         testLogging {
             //showStandardStreams = true
             exceptionFormat = 'full'
@@ -47,15 +44,42 @@ subprojects {
     }
 }
 
-task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
-    dependsOn = subprojects.test
-    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
-    classDirectories = files(subprojects.sourceSets.main.output)
-    executionData = files(subprojects.jacocoTestReport.executionData)
-    reports {
-        html.enabled = true
-        xml.enabled = true
-        csv.enabled = false
-        xml.destination = "${buildDir}/reports/jacoco/examples/jacocoTestReport.xml"
+// Only report code coverage for projects that are distributed
+def publishedProjects = subprojects.findAll { it.path != ':simulator' }
+
+task jacocoMerge(type: JacocoMerge) {
+    publishedProjects.each { subproject ->
+        executionData subproject.tasks.withType(Test)
     }
+    doFirst {
+        executionData = files(executionData.findAll { it.exists() })
+    }
+}
+
+task jacocoRootReport(type: JacocoReport, group: 'Coverage reports') {
+    description = 'Generates an aggregate report from all subprojects'
+    dependsOn publishedProjects.test, jacocoMerge
+
+    additionalSourceDirs = files(publishedProjects.sourceSets.main.allSource.srcDirs)
+    sourceDirectories = files(publishedProjects.sourceSets.main.allSource.srcDirs)
+    classDirectories = files(publishedProjects.sourceSets.main.output)
+    executionData jacocoMerge.destinationFile
+
+    reports {
+        html.enabled = true // human readable
+        xml.enabled = true // required by coveralls
+    }
+}
+
+coveralls {
+    sourceDirs = publishedProjects.sourceSets.main.allSource.srcDirs.flatten()
+    jacocoReportPath = "${buildDir}/reports/jacoco/jacocoRootReport/jacocoRootReport.xml"
+}
+
+tasks.coveralls {
+    group = 'Coverage reports'
+    description = 'Uploads the aggregated coverage report to Coveralls'
+
+    dependsOn jacocoRootReport
+    onlyIf { System.env.'CI' && !JavaVersion.current().isJava9Compatible() }
 }
