@@ -25,14 +25,6 @@ allprojects {
 subprojects {
     apply plugin: 'java'
 
-    jacocoTestReport {
-        reports {
-            html.enabled = true
-            xml.enabled = true
-            csv.enabled = false
-        }
-    }
-
     test {
         systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
         include '**/TestSuite.class'
@@ -44,8 +36,7 @@ subprojects {
     }
 }
 
-// Only report code coverage for projects that are distributed
-def publishedProjects = subprojects.findAll { it.path != ':simulator' }
+def publishedProjects = subprojects
 
 task jacocoMerge(type: JacocoMerge) {
     publishedProjects.each { subproject ->
@@ -81,5 +72,4 @@ tasks.coveralls {
     description = 'Uploads the aggregated coverage report to Coveralls'
 
     dependsOn jacocoRootReport
-    onlyIf { System.env.'CI' && !JavaVersion.current().isJava9Compatible() }
 }
