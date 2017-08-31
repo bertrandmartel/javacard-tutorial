@@ -1,0 +1,44 @@
+apply plugin: 'javacard'
+
+javacard {
+
+    config {
+        jckit '../oracle_javacard_sdks/jc221_kit'
+
+        cap {
+            packageName 'fr.bmartel.helloworld'
+            version '0.1'
+            aid '01:02:03:04:05:06:07:08:09'
+            output 'applet.cap'
+            applet {
+                className 'fr.bmartel.helloworld.HelloWorld'
+                aid '01:02:03:04:05:06:07:08:09:01'
+            }
+        }
+    }
+
+    scripts {
+        script {
+            name 'select'
+            apdu '00:A4:04:00:0A:01:02:03:04:05:06:07:08:09:01'
+        }
+        script {
+            name 'hello'
+            apdu '00:40:00:00:00'
+        }
+        task {
+            name 'sendHello'
+            scripts 'select', 'hello'
+        }
+    }
+}
+
+test {
+    systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
+    include '**/TestSuite.class'
+    outputs.upToDateWhen { false }
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = 'full'
+    }
+}

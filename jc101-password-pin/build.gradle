@@ -1,0 +1,98 @@
+apply plugin: 'javacard'
+
+repositories {
+    maven {
+        url 'http://dl.bintray.com/bertrandmartel/maven'
+    }
+}
+
+javacard {
+
+    config {
+        jckit '../oracle_javacard_sdks/jc221_kit'
+        cap {
+            packageName 'fr.bmartel.passwords'
+            version '0.1'
+            aid '01:02:03:04:05:06:07:08:09'
+            output 'applet.cap'
+
+            applet {
+                className 'fr.bmartel.passwords.PasswordPinManager'
+                aid '01:02:03:04:05:06:07:08:09:01'
+            }
+
+            dependencies {
+                remote 'fr.bmartel:gplatform:2.1.1'
+            }
+        }
+    }
+
+    scripts {
+        //select AID
+        script {
+            name 'select'
+            apdu '00:A4:04:00:0A:01:02:03:04:05:06:07:08:09:01:00'
+        }
+
+        //pin code apdu
+        script {
+            name 'update pin'
+            apdu '00:24:00:80:08:07:61:42:63:31:32:45:34'
+        }
+        script {
+            name 'verify pin'
+            apdu '00:20:00:80:07:61:42:63:31:32:45:34'
+        }
+
+        //password manager apdu
+        script {
+            name 'add password entry'
+            apdu '00:30:00:00:11:F1:04:48:6F:6D:65:F2:03:62:6F:62:F3:04:70:61:73:73'
+        }
+        script {
+            name 'get password entry'
+            apdu '00:32:00:00:06:F1:04:48:6F:6D:65'
+        }
+        script {
+            name 'delete password entry'
+            apdu '00:34:00:00:06:F1:04:48:6F:6D:65'
+        }
+        script {
+            name 'list identifiers'
+            apdu '00:36:00:00'
+        }
+
+        //set pin code task
+        task {
+            name 'setPinCode'
+            scripts 'select', 'update pin'
+        }
+        //all other task have 'verify pin' before issuing the specified command
+        task {
+            name 'listPassword'
+            scripts 'select', 'verify pin', 'list identifiers'
+        }
+        task {
+            name 'addPassword'
+            scripts 'select', 'verify pin', 'add password entry'
+        }
+        task {
+            name 'removePassword'
+            scripts 'select', 'verify pin', 'delete password entry'
+        }
+        task {
+            name 'addRemovePassword'
+            scripts 'select', 'verify pin', 'add password entry', 'delete password entry'
+        }
+    }
+}
+
+test {
+    systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
+    include '**/TestSuite.class'
+    outputs.upToDateWhen { false }
+    testLogging {
+        //showStandardStreams = true
+        exceptionFormat = 'full'
+    }
+}
