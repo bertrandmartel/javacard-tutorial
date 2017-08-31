@@ -39,7 +39,7 @@ subprojects {
     test {
         systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
         include '**/TestSuite.class'
-        outputs.upToDateWhen { false }
+        //outputs.upToDateWhen { false }
         testLogging {
             //showStandardStreams = true
             exceptionFormat = 'full'
