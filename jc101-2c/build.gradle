@@ -3,7 +3,7 @@ apply plugin: 'javacard'
 javacard {
 
     config {
-        jckit '../oracle_javacard_sdks/jc221_kit'
+        jckit 'oracle_javacard_sdks/jc221_kit'
         cap {
             packageName 'fr.bmartel.helloworld'
             version '0.1'
@@ -45,15 +45,5 @@ javacard {
             name 'debit'
             scripts 'select', 'balance', 'debit-5', 'balance'
         }
-    }
-}
-
-test {
-    systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
-    include '**/TestSuite.class'
-    outputs.upToDateWhen { false }
-    testLogging {
-        showStandardStreams = true
-        exceptionFormat = 'full'
     }
 }

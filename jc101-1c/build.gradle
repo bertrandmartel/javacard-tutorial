@@ -3,7 +3,7 @@ apply plugin: 'javacard'
 javacard {
 
     config {
-        jckit '../oracle_javacard_sdks/jc221_kit'
+        jckit 'oracle_javacard_sdks/jc221_kit'
 
         cap {
             packageName 'fr.bmartel.helloworld'
@@ -30,15 +30,5 @@ javacard {
             name 'sendHello'
             scripts 'select', 'hello'
         }
-    }
-}
-
-test {
-    systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
-    include '**/TestSuite.class'
-    outputs.upToDateWhen { false }
-    testLogging {
-        showStandardStreams = true
-        exceptionFormat = 'full'
     }
 }

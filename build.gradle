@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'fr.bmartel:gradle-javacard:1.4.0'
+        classpath 'fr.bmartel:gradle-javacard:1.4.1'
 
         //coveralls & jacoco test report
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.1.0'
@@ -33,6 +33,16 @@ subprojects {
             html.enabled = true
             xml.enabled = true
             csv.enabled = false
+        }
+    }
+
+    test {
+        systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
+        include '**/TestSuite.class'
+        outputs.upToDateWhen { false }
+        testLogging {
+            //showStandardStreams = true
+            exceptionFormat = 'full'
         }
     }
 }

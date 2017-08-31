@@ -1,15 +1,9 @@
 apply plugin: 'javacard'
 
-repositories {
-    maven {
-        url 'http://dl.bintray.com/bertrandmartel/maven'
-    }
-}
-
 javacard {
 
     config {
-        jckit '../oracle_javacard_sdks/jc221_kit'
+        jckit 'oracle_javacard_sdks/jc221_kit'
         cap {
             packageName 'fr.bmartel.passwords'
             version '0.1'
@@ -84,15 +78,5 @@ javacard {
             name 'addRemovePassword'
             scripts 'select', 'verify pin', 'add password entry', 'delete password entry'
         }
-    }
-}
-
-test {
-    systemProperty 'testMode', System.getProperty("testMode") ?: 'simulator'
-    include '**/TestSuite.class'
-    outputs.upToDateWhen { false }
-    testLogging {
-        //showStandardStreams = true
-        exceptionFormat = 'full'
     }
 }
