@@ -3,7 +3,7 @@ apply plugin: 'javacard'
 javacard {
 
     config {
-        jckit 'oracle_javacard_sdks/jc221_kit'
+        jckit '../oracle_javacard_sdks/jc221_kit'
         cap {
             packageName 'fr.bmartel.passwords'
             version '0.1'
