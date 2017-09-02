@@ -3,16 +3,12 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="jc101-1c_main" target="1.8" />
-      <module name="jc101-1c_sctest" target="1.8" />
       <module name="jc101-1c_test" target="1.8" />
       <module name="jc101-2c_main" target="1.8" />
-      <module name="jc101-2c_sctest" target="1.8" />
       <module name="jc101-2c_test" target="1.8" />
       <module name="jc101-password-pin_main" target="1.8" />
-      <module name="jc101-password-pin_sctest" target="1.8" />
       <module name="jc101-password-pin_test" target="1.8" />
       <module name="jc101-password_main" target="1.8" />
-      <module name="jc101-password_sctest" target="1.8" />
       <module name="jc101-password_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

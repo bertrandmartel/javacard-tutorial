@@ -5,19 +5,15 @@
       <module fileurl="file://$PROJECT_DIR$/javacard-tutorial.iml" filepath="$PROJECT_DIR$/javacard-tutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c.iml" group="jc101-1c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_main.iml" group="jc101-1c" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_sctest.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_sctest.iml" group="jc101-1c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-1c/jc101-1c_test.iml" group="jc101-1c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c.iml" group="jc101-2c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_main.iml" group="jc101-2c" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_sctest.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_sctest.iml" group="jc101-2c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-2c/jc101-2c_test.iml" group="jc101-2c" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password.iml" group="jc101-password" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin.iml" group="jc101-password-pin" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_main.iml" group="jc101-password-pin" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_sctest.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_sctest.iml" group="jc101-password-pin" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password-pin/jc101-password-pin_test.iml" group="jc101-password-pin" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_main.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_main.iml" group="jc101-password" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_sctest.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_sctest.iml" group="jc101-password" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_test.iml" filepath="$PROJECT_DIR$/.idea/modules/jc101-password/jc101-password_test.iml" group="jc101-password" />
     </modules>
   </component>
