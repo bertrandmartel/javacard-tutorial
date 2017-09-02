@@ -18,7 +18,7 @@ import java.io.OutputStream;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.fail;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Suite.class)
