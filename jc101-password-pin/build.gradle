@@ -1,5 +1,10 @@
 apply plugin: 'javacard'
 
+dependencies {
+    testCompile 'com.github.martinpaljak:apdu4j:18.10.04'
+    compile 'com.github.martinpaljak:globalplatformpro:18.09.14'
+}
+
 javacard {
 
     config {
