@@ -1,6 +1,6 @@
 package fr.bmartel.passwords;
 
-import apdu4j.LoggingCardTerminal;
+import apdu4j.terminals.LoggingCardTerminal;
 import apdu4j.TerminalManager;
 import com.licel.jcardsim.smartcardio.CardSimulator;
 import com.licel.jcardsim.utils.AIDUtil;
@@ -35,7 +35,7 @@ public class TestSuite {
     private static Card initGp() {
 
         try {
-            TerminalFactory tf = TerminalManager.getTerminalFactory(null);
+            TerminalFactory tf = TerminalManager.getTerminalFactory();
 
             CardTerminals terminals = tf.terminals();
 
@@ -83,7 +83,7 @@ public class TestSuite {
                 e.printStackTrace(); // TODO: remove
                 fail("CardException, terminating");
             }
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

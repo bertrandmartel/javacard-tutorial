@@ -23,9 +23,14 @@ final def rootPath = rootDir.absolutePath
 final def libs = rootPath + '/libs'
 final def libsSdk = rootPath + '/oracle_javacard_sdks'
 final def gpdir_1_7 = '../libs/gpapi1.7/'
-final def gpdir_1_6 = '../libs/gpapi1.6/'
-final def gpdir_1_5 = '../libs/gpapi1.5/'
-final def gpdir = gpdir_1_7
+final def gp211 = '../libs/gp211/'
+final def gp221 = '../libs/gp221/'
+
+final def gp211jar = 'gp211.jar'
+final def gp221jar = 'gp221.jar'
+
+final def gpjar = gp221jar
+final def gpdir = gp221
 
 // Repositories for your project
 repositories {
@@ -123,6 +128,9 @@ final def JC_SELECTED = JC304
 javacard {
 
     config {
+
+        debugGpPro true
+
         jckit JC_SELECTED
         cap {
             packageName 'fr.bmartel.passwords'
@@ -142,7 +150,7 @@ javacard {
                 local {
 //                    jar  '../libs/gpapi1.7/gpapi-globalplatform.jar'
 //                    exps '../libs/gpapi1.7/'
-                    jar  gpdir + 'gpapi-globalplatform.jar'
+                    jar  gpdir + gpjar
                     exps gpdir // exp file is at gpdir/org/globalplatform/javacard
                 }
             }

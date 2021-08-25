@@ -110,6 +110,9 @@ final def JC_SELECTED = JC304
 javacard {
 
     config {
+
+        debugGpPro true
+
         jckit JC_SELECTED
         cap {
             packageName 'fr.bmartel.helloworld'
