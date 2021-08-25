@@ -24,7 +24,11 @@ public class Counter extends Applet {
 
     public void process(APDU apdu) {
         byte[] buffer = apdu.getBuffer();
-        if (selectingApplet()) return;
+        if (selectingApplet()){
+            Util.setShort(buffer, (short)0, (short)65535);
+            apdu.setOutgoingAndSend((short)0, (short)2);
+            return;
+        }
 
         switch (buffer[ISO7816.OFFSET_INS]) {
             case INS_GET_BALANCE:
